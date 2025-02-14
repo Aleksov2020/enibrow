@@ -86,6 +86,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const phoneInput = document.querySelector("#phone-input");
+
+    function formatPhone(value) {
+        let cleaned = value.replace(/\D/g, "").slice(0, 10); // Оставляем только цифры (макс. 10)
+        
+        let template = "(___) ___-__-__";
+        let result = template.split("");
+
+        let digitIndex = 0;
+        for (let i = 0; i < result.length; i++) {
+            if (result[i] === "_" && digitIndex < cleaned.length) {
+                result[i] = cleaned[digitIndex];
+                digitIndex++;
+            }
+        }
+
+        return result.join("");
+    }
+
+    phoneInput.addEventListener("input", function () {
+        this.value = formatPhone(this.value);
+    });
+
+    phoneInput.addEventListener("keydown", function (event) {
+        if (event.key === "Backspace") {
+            let cleaned = this.value.replace(/\D/g, "");
+            cleaned = cleaned.slice(0, -1); // Удаляем последнюю цифру
+            this.value = formatPhone(cleaned);
+            event.preventDefault(); // Предотвращаем стандартное удаление символов
+        }
+    });
+});
+
 
 // ===================== SLIDER REVIEWS
 
@@ -94,9 +128,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const slides = document.querySelectorAll(".review-card");
     const nextButton = document.querySelector(".reviews-button.prev-button");
     const prevButton = document.querySelector(".reviews-button.next-button");
-    
+    const gap = window.innerWidth < 700 ? 10 : 30; // Определяем gap по разрешению
     let currentIndex = 0;
-    const slideWidth = slides[0].offsetWidth + 30; // Ширина слайда + gap (30px)
+    const slideWidth = slides[0].offsetWidth + gap; // Ширина слайда + gap (30px)
 
     function updateSlidePosition() {
         track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
