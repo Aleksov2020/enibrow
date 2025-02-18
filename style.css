@@ -12,6 +12,10 @@ body {
     text-decoration-skip-ink: none;
 }
 
+img {
+    object-fit: cover;
+}
+
 .discont br {
     display: none;
 }
@@ -335,6 +339,17 @@ h3 {
 .text-30-400 {
     font-size: 30px;
     font-weight: 400;
+}
+
+.title__page {
+    font-family: Oranienbaum;
+    font-weight: 400;
+    font-size: 65px;
+    line-height: 75.08px;
+    letter-spacing: 0%;
+
+    font-size: 65px;
+    line-height: 75px;
 }
 
 /* HEADER */
@@ -688,9 +703,10 @@ nav {
 .slider-right-background {
     height: 100%;
     width: 100%;
-    background-image: url(./assets/bg-right.png);
     background-position-x: left;
     background-repeat: no-repeat;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
+    url(./assets/bg-right.png);
     position: relative;
     z-index: 1;
 }
@@ -723,6 +739,7 @@ nav {
 .checkbox {
     width: 16px;
     height: 16px;
+    min-width: 16px;
     background-color: #fff;
     border-radius: 3px;
     border: 1px solid #825E6980;
@@ -1021,6 +1038,7 @@ nav {
 
 .gallery-photo img {
     border-radius: 5px;
+    object-fit: cover;
 }
 
 .gallery-item:hover {
@@ -1063,6 +1081,10 @@ nav {
     display: flex;
     align-items: center;
     cursor: pointer;
+}
+
+.gallery-master-photo img {
+    object-fit: cover;
 }
 
 .gallery-master-info-wrapper {
@@ -1295,7 +1317,7 @@ td.price {
 }
 
 .discont-slider {
-    width: 50%;
+    min-width: 57%;
     height: 100%;
 }
 
@@ -1311,7 +1333,7 @@ td.price {
     height: 100%;
     width: 469px;
     top: 0;
-    left: 70%;
+    left: 65%;
     transform: translate3d(-70%, 0, 0);
     z-index: 1;
     background: linear-gradient(270deg, rgba(248, 239, 232, 0) 2.87%, rgba(248, 239, 232, 0.415) 45.12%, #F8EFE8 78.32%);
@@ -1491,8 +1513,8 @@ td.price {
     user-select: none;
 }
 
-.master-badge:hover img {
-    filter: invert(1);
+.master-badge:hover path {
+    fill: #FFF;
 }
 
 .master-description-wrapper {
@@ -1612,10 +1634,10 @@ td.price {
 
 .map {
     height: auto;
-    background-image: url(./assets/map-slide.png);
+    background-image: url(./assets/map-discount.png);
     background-repeat: no-repeat;
     background-position-x: right;
-    background-size: contain;
+    background-size: 70%;
 
     margin-top: 82px;
 }
@@ -1626,6 +1648,7 @@ td.price {
 
 .map .discont-slider {
     width: 20%;
+    min-width: unset;
 }
 
 .map .discont-slide {
@@ -1801,6 +1824,8 @@ td.price {
 
     align-items: center;
     justify-content: center;
+
+    padding-left: 8px;
 }
 
 .video-item:hover .video-filter {
@@ -2098,7 +2123,7 @@ footer {
     right: 0;
     bottom: 0;
     transform: translate3d(20%, 0, 0);
-    width: 121px;
+    width: 125px;
     height: 123px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2247,10 +2272,17 @@ footer {
     align-items: center;
     gap: 45px;
     transition: .3s;
+
+    cursor: pointer;
+    user-select: none;
 }
 
 .faq-item:hover {
     background-color: #FFFCF6;
+}
+
+.faq-item:hover .faq-item-title { 
+    text-decoration: underline;
 }
 
 .faq-item-title-wrapper {
@@ -2323,6 +2355,16 @@ footer {
     gap: 18px;
     max-width: 673px;
     transition: .3s;
+}
+
+.service-slider-form-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.service-slider-form-wrapper .checkbox-label {
+    font-size: 12px;
+    line-height: 14px;
 }
 
 .service-slider-form-wrapper:hover {
@@ -2412,9 +2454,18 @@ footer {
 }
 
 .service-page-slide img, .service-page-slide {
-    height: 614px;
+    height: -webkit-fill-available;
     transition: .4s;
     border-radius: 10px;
+    min-height: 560px;
+}
+
+.service-page-wrapper {
+    gap: 0;
+}
+
+.service-page-slide.slide-visible-one img {
+    height: 100%;
 }
 
 .service-page-slide.slide-visible-one img, .service-page-slide.slide-visible-one {
@@ -2538,6 +2589,10 @@ footer {
 .subservice-item-text-item-label-wrapper {
     align-items: center;
     gap: 10px;
+}
+
+.subservice-item-text-item-label {
+    line-height: 25px;
 }
 
 .subservice-item-text-item-separator {
@@ -2666,6 +2721,10 @@ footer {
 
 }
 
+.blog-page-subtitle, .page-subtitle {
+    line-height: 30px;
+}
+
 .blog-page-category-wrapper {
     gap: 20px;
 }
@@ -2714,16 +2773,21 @@ footer {
 }
 
 .pagination-arrow {
-    padding: 21px 25px;
     border-radius: 10px;
     border: 1px solid #825E6933;
     background-color: #FFF;
     box-shadow: 0px 0px 25px 0px #825E6933;
-
+    min-height: 53px;
+    min-width: 56px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .pagination-slide-number {
-    padding: 21px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
     background-color: #FFF;
     box-shadow: 0px 0px 25px 0px #825E6933;
@@ -2731,6 +2795,8 @@ footer {
     user-select: none;
     transition: .3s;
     border: 1px solid #FFF;
+    min-width: 53px;
+    min-height: 56px;
 }
 
 .pagination-slide-number:hover {
@@ -2932,6 +2998,10 @@ footer {
 
 .faq-page-item-wrapper:hover .faq-item-button-wrapper .faq-item-button-label {
     text-decoration: underline;
+}
+
+.faq-item-button-label {
+    font-weight: 300;
 }
 
 
@@ -3165,8 +3235,18 @@ padding-top: 22px;
     transition: .3s;
 }
 
+.discont-slide svg {
+    min-width: 15px;
+    transition: .3s;
+}
+
 .discont:hover {
     box-shadow: 0px 0px 25px 0px #825E6980;
+}
+
+.discont-slide:hover path {
+    stroke: #FFF;
+    transition: .3s;
 }
 
 .page-sale-archive-wrapper .page-subtitle {
@@ -3453,7 +3533,7 @@ padding-top: 22px;
 .text-plate {
     border-radius: 10px;
     padding: 13px 25px;
-    line-height: inherit;
+    line-height: 30px;
 }
 
 .green-plate {
@@ -3495,6 +3575,8 @@ padding-top: 22px;
 .faq-page-author-image {
     display: flex;
     align-items: center;
+
+    cursor: pointer;
 }
 
 .faq-page-author {
@@ -3635,6 +3717,10 @@ padding-top: 22px;
     padding: 7px 13px;
     border-radius: 20px 0 20px 0;
     background-color: #EEE;
+}
+
+.yellow-badge-page {
+    background: #FFBB3E4D;
 }
 
 .masters-page-step-wrapper {
@@ -3924,7 +4010,11 @@ padding-top: 22px;
     }
 
     .discont-filter::before {
-        left: 82%;
+        left: 79%;
+    }
+
+    .discont-slider {
+        min-width: 53%;
     }
 
     .discont-slide .button {
@@ -4995,6 +5085,7 @@ padding-top: 22px;
     .map {
         background-position-y: bottom;
         height: 350px;
+        background-size: contain;
     }
     
     .map .discont-filter::before {
