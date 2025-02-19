@@ -157,6 +157,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".roll-block").forEach((rollBlock, index) => {
+        if (rollBlock.classList.contains("skip")) {
+            return
+        }
+
         const toggleButton = document.querySelectorAll(".button-roll-block")[index];
 
         const maxHeight = "194px"; // Высота в свернутом состоянии
@@ -306,6 +310,128 @@ document.addEventListener("DOMContentLoaded", function () {
             formWrapper.classList.remove("fixed")
         }
     });
+});
+
+//===================================== ABOUT SLIDER
+
+document.addEventListener("DOMContentLoaded", function () {
+    const track = document.querySelector(".about-slider-track");
+    const slides = document.querySelectorAll(".about-slide-right");
+    const prevButton = document.querySelector(".about-slide-right-button.prev-button");
+    const nextButton = document.querySelector(".about-slide-right-button.next-button");
+    let currentIndex = 0;
+    const slideWidth = slides[0].offsetWidth;  // Используем ширину слайда для корректного перемещения
+
+    // Функция для обновления позиции слайдов
+    function updateSlidePosition() {
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`; // Двигаем слайды на ширину одного слайда
+    }
+
+    // Переход к следующему слайду
+    function nextSlide() {
+        if (currentIndex < slides.length - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Циклический переход
+        }
+        updateSlidePosition();
+    }
+
+    // Переход к предыдущему слайду
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = slides.length - 1; // Циклический переход
+        }
+        updateSlidePosition();
+    }
+
+    // Обработчики кликов по кнопкам
+    nextButton.addEventListener("click", () => {
+        nextSlide();
+        resetAutoSlide(); // Остановить автопрокрутку при клике
+    });
+
+    prevButton.addEventListener("click", () => {
+        prevSlide();
+        resetAutoSlide(); // Остановить автопрокрутку при клике
+    });
+
+    // Автопрокрутка слайдов
+    let autoSlideInterval;
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 3000);  // Каждые 3 секунды переходит к следующему слайду
+    }
+
+    // Остановить автопрокрутку
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);  // Останавливаем текущую автопрокрутку
+        startAutoSlide();  // Запускаем новую автопрокрутку
+    }
+
+    // Запуск автопрокрутки при загрузке страницы
+    startAutoSlide();
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const track = document.querySelector(".masters-wrapper-track");
+    const slides = document.querySelectorAll(".master-card");
+    const prevButton = document.querySelector(".masters-button-slider.prev-button");
+    const nextButton = document.querySelector(".masters-button-slider.next-button");
+    let currentIndex = 0;
+    const slideWidth = slides[0].offsetWidth + 30;  // Используем ширину слайда для корректного перемещения
+
+    // Функция для обновления позиции слайдов
+    function updateSlidePosition() {
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`; // Двигаем слайды на ширину одного слайда
+    }
+
+    // Переход к следующему слайду
+    function nextSlide() {
+        if (currentIndex < slides.length - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Циклический переход
+        }
+        updateSlidePosition();
+    }
+
+    // Переход к предыдущему слайду
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = slides.length - 1; // Циклический переход
+        }
+        updateSlidePosition();
+    }
+
+    // Обработчики кликов по кнопкам
+    nextButton.addEventListener("click", () => {
+        nextSlide();
+        resetAutoSlide(); // Остановить автопрокрутку при клике
+    });
+
+    prevButton.addEventListener("click", () => {
+        prevSlide();
+        resetAutoSlide(); // Остановить автопрокрутку при клике
+    });
+
+    // Автопрокрутка слайдов
+    let autoSlideInterval;
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 3000);  // Каждые 3 секунды переходит к следующему слайду
+    }
+
+    // Остановить автопрокрутку
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);  // Останавливаем текущую автопрокрутку
+        startAutoSlide();  // Запускаем новую автопрокрутку
+    }
 });
 
 
