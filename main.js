@@ -1,30 +1,3 @@
-/* header open menu */
-
-const headerItems = document.querySelectorAll(".nav__item");
-
-headerItems.forEach((item) => {
-    const dropdown = item.querySelector(".services-header-wrapper"); // Находим вложенное меню
-    const arrow = item.querySelector("img"); // Находим стрелку
-
-    if (dropdown) { // Проверяем, есть ли вложенное меню
-        item.addEventListener("click", () => {
-            const isOpen = dropdown.classList.contains("active");
-
-            // Закрываем все открытые меню
-            document.querySelectorAll(".services-header-wrapper").forEach((el) => {
-                el.classList.remove("active");
-            });
-
-            // Переключаем класс "active" для текущего элемента
-            if (!isOpen) {
-                dropdown.classList.add("active");
-            } 
-
-            // Переключаем поворот стрелки
-            arrow.classList.toggle("rotate", !isOpen);
-        });
-    }
-});
 
 //=============================CHECKOX
 
@@ -433,5 +406,78 @@ document.addEventListener("DOMContentLoaded", function () {
         startAutoSlide();  // Запускаем новую автопрокрутку
     }
 });
+
+
+/* header open menu */
+
+const headerItems = document.querySelectorAll(".nav__item");
+
+headerItems.forEach((item) => {
+    const dropdown = item.querySelector(".services-header-wrapper"); // Находим вложенное меню
+    const arrow = item.querySelector("img"); // Находим стрелку
+
+    if (dropdown) { // Проверяем, есть ли вложенное меню
+        item.addEventListener("click", (event) => {
+            const isOpen = dropdown.classList.contains("active");
+
+            if (document.innerWidth > 768) {
+                // Закрываем все открытые меню
+                document.querySelectorAll(".services-header-wrapper").forEach((el) => {
+                    el.classList.remove("active");
+                });
+            }
+
+            // Переключаем класс "active" для текущего элемента
+            if (!isOpen) {
+                dropdown.classList.add("active");
+            } else {
+                if (event.target.classList.contains("label-nav__item")) {
+                    dropdown.classList.remove("active");
+                }
+                
+            }
+
+            // Переключаем поворот стрелки
+            arrow.classList.toggle("rotate", !isOpen);
+        });
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Находим все элементы с классом .full-width-container-title
+    const titleElements = document.querySelectorAll('.full-width-container-title');
+
+    titleElements.forEach(title => {
+        // Добавляем обработчик клика на каждый элемент с классом .full-width-container-title
+        title.addEventListener('click', function () {
+            titleElements.forEach(title => {
+                title.classList.remove("active");
+            });
+            document.querySelectorAll('.full-width-container-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            title.classList.add("active");
+            // Находим все элементы с классом .full-width-container-item в пределах этого .full-width-container-col
+            const itemElements = title.closest('.full-width-container-col').querySelectorAll('.full-width-container-item');
+            
+            // Добавляем класс active всем этим элементам
+            itemElements.forEach(item => {
+                item.classList.toggle('active');
+            });
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Находим все элементы с классом .full-width-container-title
+    const button = document.querySelector('.button-show-mobile-menu');
+
+    // Добавляем обработчик клика на каждый элемент с классом .full-width-container-title
+    button.addEventListener('click', function () {
+        document.querySelector('.header').classList.toggle("active");
+    });
+});
+
 
 

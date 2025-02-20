@@ -365,7 +365,27 @@ h3 {
     justify-content: center;
 }
 
+.mobile-header-footer {
+    display: none;
+}
+
+.wrapper-mobile-contacts {
+    display: none;
+}
+
+.button-mobile-circle {
+    display: none;
+}
+
+.label-nav__item {
+    gap: 15px;
+    align-items: center;
+}
+
 .laptop-nav {
+    display: none;
+}
+.mobile-header-wrapper {
     display: none;
 }
 
@@ -444,20 +464,11 @@ nav {
 }
 
 .nav__item {
-    cursor: pointer;
-    white-space: nowrap;
-    user-select: none;
     display: flex;
     gap: 15px;
     align-items: center;
     transition: .4s;
 }
-
-.nav__item:hover {
-    transition: .4s;
-    text-decoration: underline;
-}
-
 .services-header-wrapper {
     position: absolute;
     background-color: #FFF;
@@ -1176,9 +1187,26 @@ nav {
     align-items: center;
 }
 
-.services-price table {
+.wrapper-price-content {
+    max-width: 1200px;
+}
+
+.table-wrapper {
     width: 100%;
+}
+
+.services-price table {
     border-collapse: collapse;
+    table-layout: auto;
+}
+
+.content-row {
+    transition: .3s;
+}
+
+
+.content-row:hover {
+    background-color: #FFF5E0;
 }
 
 .services-price thead {
@@ -1205,6 +1233,9 @@ th {
     line-height: 30px;
     padding: 7px 0;
     padding-left: 30px;
+    text-align: left;
+
+    cursor: pointer;
 }
 
 .services-price-wrapper-name {
@@ -1216,6 +1247,7 @@ th {
 
 .services-price-name-wrapper {
     gap: 20px;
+    min-width: 450px;
 }
 
 .services-price-sale-badge {
@@ -1227,10 +1259,12 @@ th {
     cursor: pointer;
     user-select: none;
     transition: .3s;
+    height: fit-content;
 }
 
 .services-price-name {
     line-height: 30px;
+    white-space: nowrap;
 }
 
 .services-price-short-descrpition {
@@ -1249,7 +1283,9 @@ th {
     text-decoration: underline;
 }
 
-
+.services-price-short-descrpition {
+    text-align: left;
+}
 
 .services-price-sale-badge:hover {
     background-color: #FFF;
@@ -1258,6 +1294,38 @@ th {
 
 td.price {
     vertical-align: top;
+    min-width: 150px;
+    padding-top: 12px;
+}
+
+.price-button-service {
+    border-radius: 90px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: fit-content;
+    line-height: 30px;
+
+    cursor: pointer;
+    user-select: none;
+    transition: .3s;
+}
+
+.price-button-service svg {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.price-button-service:hover {
+    background: #825E69;
+    color: #FFF;
+}
+
+.price-button-service:hover svg {
+    visibility: visible;
+    opacity: 1;
 }
 
 .services-price .price {
@@ -1270,6 +1338,53 @@ td.price {
 
 .first-row td {
     padding-top: 20px;
+}
+
+/* Сделать таблицу прокручиваемой на мобильных устройствах */
+.table-wrapper {
+    overflow-x: auto;  /* Добавляем горизонтальную прокрутку */
+    -webkit-overflow-scrolling: touch; /* Плавная прокрутка на iOS */
+    margin-bottom: 20px; /* Если нужно добавить немного отступа снизу */
+}
+
+@media (max-width: 1400px) {
+    .services-price table {
+        table-layout: fixed;  /* Устанавливаем фиксированную ширину ячеек */
+    }
+
+    .wrapper-price-content {
+        max-width: unset;
+        margin-left: 10px;
+        max-width: calc(100% - 10px);
+    }
+
+    th, td {
+        padding: 10px; /* Меньше отступов для мобильных */
+        text-align: center;  /* Центрируем текст */
+    }
+
+    .services-price-wrapper-name {
+        padding-left: 10px;  /* Уменьшаем отступы */
+    }
+
+    .services-price-title {
+        padding-left: 10px;
+    }
+
+    .services-price-short-descrpition {
+        text-align: left;
+    }
+
+    .services-price-name-wrapper {
+        gap: 10px;  /* Меньше отступов */
+        min-width: 200px; /* Меньше минимальной ширины */
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 20px;
+    }
 }
 
 /*====================== DISCONT ======================*/
@@ -4157,6 +4272,14 @@ padding-top: 22px;
         max-width: 1000px;
     }
 
+    .header-position-wrapper .wrapper {
+        max-width: unset;
+    }
+
+    .social-links-mobile {
+        gap: 9px;
+    }
+
     h3 {
         font-weight: 400;
         font-size: 30px;
@@ -4236,7 +4359,61 @@ padding-top: 22px;
         display: none;
     }
 
+    header {
+        height: auto;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .logo-mobile {
+        background: linear-gradient(180deg, #A37381 0%, #654B53 100%);
+        height: 75px;
+    }
+    
+    .logo-mobile img {
+        height: 75px;
+        width: 175px;
+    }
+    .mobile-header-wrapper {
+        display: flex;
+        justify-content: space-between;
+        padding-right: 50px;
+    }
+
+    .header__contacts, .header__right-part {
+        display: none;
+    }
+
+    .logo-mobile-wrapper {
+        gap: 29px;
+        align-items: center;
+        padding: 0 14px;
+    }
+
+    .address {
+        max-width: 300px;
+    }
+
+    .social-links-mobile {
+        display: flex;
+    }
+
+    .header__left-part {
+        flex-direction: row;
+        gap: 10px;
+        width: 100%;
+    }
+
     .nav-pc {
+        justify-content: space-evenly;
+        width: 100%;
+        padding: 6px 0;
+    }
+
+    .logo {
         display: none;
     }
 
@@ -4251,10 +4428,6 @@ padding-top: 22px;
         white-space: nowrap;
     }
 
-    .header {
-        gap: 29px;
-    }
-
     .header__right-part .button {
         width: 195px;
         height: 54px;
@@ -4262,16 +4435,25 @@ padding-top: 22px;
 
     .slider {
         gap: 0;
-        max-width: 1200px;
+        width: 100%;
+        max-width: unset;
     }
 
     .slider__left {
-        width: 850px;
+        width: 70%;
         height: 635px;
     }
 
     .slider__right {
-        width: 350px;
+        width: 30%;
+    }
+
+    .address .icon {
+        display: none;
+    }
+
+    .mobile-header-wrapper {
+        padding-right: 0;
     }
 
 
@@ -4656,10 +4838,6 @@ padding-top: 22px;
 
     header {
         height: auto;
-    }
-
-    .nav-pc {
-        display: none;
     }
 
     .laptop-nav {
@@ -5181,9 +5359,6 @@ padding-top: 22px;
     .slider-wrapper {
         padding: 20px 36px;
     }
-    .header-position-wrapper {
-        display: none;
-    }
     .slider__right {
         width: 100%;
     }
@@ -5205,7 +5380,284 @@ padding-top: 22px;
         gap: 20px;
     }
 
+    .header.active {
+        position: fixed;
+        z-index: 100;
+        width: 100%;
+    }
 
+    .menu {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background-color: #FFF;
+        z-index: 100;
+        flex-direction: column;
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+    }
+
+    .header.active .menu {
+        opacity: 1;
+        visibility: visible;
+        height: calc(100vh - 60px);
+    }
+    .close-icon {
+        display: none;
+    }
+
+    .header.active .button-show-mobile-menu .points {
+        display: none;
+    }
+
+    .header.active .button-show-mobile-menu .close-icon {
+        display: flex;
+    }
+
+    .mobile-header-footer {
+        width: 100%;
+    }
+    .button-header-footer {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        height: 50px;
+        color: #FFF;
+        cursor: pointer;
+        background-color: #825E69;
+        font-family: Montserrat;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19.5px;
+        letter-spacing: 5%;
+
+    }
+
+    .button-header-footer.phone-footer-icon {
+        background: #825E69B2;
+    }
+
+    .address {
+        display: none;
+    }
+
+    .header__right-part-mobile {
+        display: none;
+    }
+
+    .service-header-wrapper-inner {
+        flex-direction: column;
+    }
+
+    .nav__item {
+        gap: 0
+    }
+
+    .full-width-container-item {
+        display: none;
+    }
+
+    .full-width-container-item.active {
+        display: flex;
+    }
+
+    .services-header-wrapper.full-width-container, .services-header-wrapper.container-about {
+        position: relative;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .full-width-container-title-icon {
+        transition: .4s;
+    }
+
+    .full-width-container-title.active .full-width-container-title-icon {
+        transform: rotate(90deg)
+    }
+
+    .services-header-wrapper.full-width-container.active {
+        padding-top: 30px;
+    }
+
+    .full-width-container-separator {
+        background-color:  #825E6933;
+    }
+
+    .full-width-container-col {
+        gap: 15px;
+        padding-bottom: 15px;
+    }
+
+    .logo-mobile-wrapper {
+        width: 100%;
+        background: linear-gradient(180deg, #A37381 0%, #654B53 100%);
+        height: 60px;
+
+        justify-content: space-between;
+    }
+
+    .logo-mobile {
+        height: 60px;
+    }
+
+    .logo-mobile img {
+        height: 60px;
+        width: 100px;
+        object-fit: contain;
+    }
+
+    .button-mobile-circle {
+        border-radius: 50%;
+        border: 1px solid #FFF;
+        width: 41px;
+        height: 41px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .button-show-mobile-menu {
+        flex-direction: column;
+        gap: 4px;
+
+        cursor: pointer;
+    }
+
+    .nav__item {
+        flex-direction: column;
+        font-family: Oranienbaum;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 34.65px;
+        letter-spacing: 0%;
+        cursor: pointer;
+        white-space: nowrap;
+        user-select: none;
+        align-items: start;
+    }
+
+    .menu {
+        align-items: start;
+        transition: .4s;
+    }
+
+    .services-header-wrapper {
+        top: 0;
+    }
+
+    .header__left-part {
+        padding: 24px 38px;
+        justify-content: start;
+    }
+
+    .full-width-container-col {
+        font-family: Montserrat;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 19.5px;
+        letter-spacing: 0%;
+        padding-right: 0;
+
+    }
+
+    .container-about.active {
+        padding-top: 30px;
+        padding-left: 15px;;
+    }
+
+    .container-about .service-header-wrapper-item {
+        font-family: Montserrat;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19.5px;
+        letter-spacing: 0%;
+        color: #000;
+    }
+
+    .social-links-mobile {
+        display: none;
+    }
+
+    .wrapper-mobile-contacts .header__contacts {
+        display: flex;
+    }
+
+    .wrapper-mobile-contacts .social-links {
+        display: flex;
+    }
+
+    .wrapper-mobile-contacts .header__contacts {
+        display: flex;
+    }
+
+    .wrapper-mobile-contacts .phone-label {
+        font-family: Montserrat;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29.26px;
+        letter-spacing: 5%;
+        color: #000;
+    }
+
+    .wrapper-mobile-contacts .work-time {
+        font-family: Montserrat;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14.63px;
+        letter-spacing: 0%;
+        color: #825E69;
+        text-align: center;
+    }
+
+    .label-address {
+        font-family: Montserrat;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17.07px;
+        letter-spacing: 0%;
+        text-align: center;
+
+        max-width: unset;
+        text-align: center;
+    }
+
+    .wrapper-mobile-contacts .button {
+        width: 100%;
+        height: 46px;
+    }
+
+    .wrapper-mobile-contacts .social-link {
+        width: 28px;
+        height: 28px;
+    }
+
+    .wrapper-mobile-contacts .yt {
+        width: 36px;
+    }
+
+    .social-link {
+        cursor: pointer;
+    }
+
+    .header {
+        gap: 0;
+    }
+
+    .header__left-part {
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    .nav-pc {
+        flex-direction: column;
+    }
 
     .gallery  {
         gap: 15px;
@@ -5360,10 +5812,6 @@ padding-top: 22px;
     table {
         max-width: 340px;
         overflow-x: scroll;
-    }
-
-    .services-price {
-        overflow: scroll;
     }
 
     .gallery-category-wrapper {
