@@ -6178,4 +6178,17 @@ padding-top: 22px;
     .masters-button-slider {
         display: flex;
     }
+
+    .mobile-header-footer {
+        display: flex;
+    }
+    
+    .wrapper-mobile-contacts {
+        display: flex;
+    }
+    
+    .button-mobile-circle {
+        display: flex;
+    }
+    
 }
