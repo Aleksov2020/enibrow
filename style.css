@@ -16,6 +16,10 @@ img {
     object-fit: cover;
 }
 
+.icon img {
+    object-fit: contain;
+}
+
 .discont br {
     display: none;
 }
@@ -560,6 +564,10 @@ nav {
     left: 0;
 }
 
+.social-links-mobile {
+    display: none;
+}
+
 .full-width-container-col {
     gap: 19px;
     padding-right: 40px;
@@ -1045,7 +1053,6 @@ nav {
 
 .gallery-item {
     position: relative;
-    transition: .3s;
 }
 
 .gallery-photo {
@@ -1076,7 +1083,7 @@ nav {
     top: 50%;
     background-color: #fff;
     padding: 11px 15px;
-    transition: .3s;
+
     gap: 15px;
     z-index: 2;
     box-shadow: 0px 0px 25px 0px #825E6980;
@@ -1188,7 +1195,8 @@ nav {
 }
 
 .wrapper-price-content {
-    max-width: 1200px;
+    max-width: 1440px;
+    width: 100%;
 }
 
 .table-wrapper {
@@ -1198,6 +1206,7 @@ nav {
 .services-price table {
     border-collapse: collapse;
     table-layout: auto;
+    width: 100%;
 }
 
 .content-row {
@@ -1221,11 +1230,30 @@ th {
     color: #fff;
     line-height: 30px;
     text-align: left;
+    padding-left: 7px;
+    padding-right: 7px;
 }
 
 .services-price-header-name {
     padding-left: 30px;
 }
+
+.top-master-label {
+    position: relative;
+}
+
+.label-fot-top-master {
+    position: absolute;
+    bottom: 109%;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #000;
+}
+
 
 .services-price-title {
     font-size: 22px;
@@ -1296,8 +1324,13 @@ td.price {
     vertical-align: top;
     min-width: 150px;
     padding-top: 12px;
+    line-height: 30px;
 }
 
+
+.first-row {
+    line-height: 30px;
+}
 .price-button-service {
     border-radius: 90px;
     padding-left: 10px;
@@ -1345,6 +1378,8 @@ td.price {
     overflow-x: auto;  /* Добавляем горизонтальную прокрутку */
     -webkit-overflow-scrolling: touch; /* Плавная прокрутка на iOS */
     margin-bottom: 20px; /* Если нужно добавить немного отступа снизу */
+    width: 100%;
+    padding-top: 20px;
 }
 
 @media (max-width: 1400px) {
@@ -1356,11 +1391,6 @@ td.price {
         max-width: unset;
         margin-left: 10px;
         max-width: calc(100% - 10px);
-    }
-
-    th, td {
-        padding: 10px; /* Меньше отступов для мобильных */
-        text-align: center;  /* Центрируем текст */
     }
 
     .services-price-wrapper-name {
@@ -2213,6 +2243,7 @@ td.price {
 
 .roll-block-text, .roll-block-item-text, .roll-block-dangerous-text {
     line-height: 30px;
+    display: inline;
 }
 
 .roll-block-items-wrapper {
@@ -2221,11 +2252,15 @@ td.price {
 
 .roll-block-item-wrapper {
     gap: 13px;
-    align-items: center;
+}
+
+.roll-block-item-icon {
+    padding-top: 7px;
 }
 
 .roll-block-item-title {
     line-height: 30px;
+    display: inline;
 }
 
 .roll-block-dangerous-wrapper {
@@ -2802,6 +2837,11 @@ footer {
     gap: 15px;
 }
 
+.service-blog-item-title-value {
+    display: flex;
+    align-items: center;
+}
+
 .service-blog-item-time-wrapper {
     gap: 10px;
 }
@@ -3043,6 +3083,10 @@ footer {
     padding: 10px 15px;
     border-radius: 20px 0 20px 0;
     background-color: #Fff;
+}
+
+.blog-page-views-icon img {
+    object-fit: contain;
 }
 
 .blogpage-content-wrapper {
@@ -4243,7 +4287,6 @@ padding-top: 22px;
 
     bottom: 30px;
     left: -80px;
-    animation: moveBottom 1s infinite alternate;
 }
 
 .masters-button-slider {
@@ -4278,6 +4321,10 @@ padding-top: 22px;
 
     .social-links-mobile {
         gap: 9px;
+    }
+
+    .services-price table {
+        width: unset;
     }
 
     h3 {
@@ -5298,9 +5345,23 @@ padding-top: 22px;
         padding-bottom: 30px;
     }
 
+    .title__page {
+        font-size: 40px;
+        line-height: 46px;
+    }
+
     .service-slider-form-title {
         font-size: 20px;
         font-weight: 500;
+    }
+
+    .service-page-slide {
+        min-height: 314px;
+        max-height: 314px;
+    }
+
+    .service-page-slide img {
+        min-height: 314px;
     }
 
     .about-slider {
@@ -5506,8 +5567,8 @@ padding-top: 22px;
 
     .logo-mobile img {
         height: 60px;
-        width: 100px;
-        object-fit: contain;
+        width: 160px;
+        object-fit: cover;
     }
 
     .button-mobile-circle {
@@ -5688,6 +5749,7 @@ padding-top: 22px;
         top: 215px;
         height: 200px;
         left: 0;
+        transform: none;
     }
 
     .discont-slide .button {
@@ -5695,7 +5757,7 @@ padding-top: 22px;
     }
 
     .discont-slide {
-        min-width: 357px;
+        min-width: 340px;
         height: 155px;
     }
 
@@ -5714,8 +5776,8 @@ padding-top: 22px;
         display: flex;
         position: absolute;
         background: linear-gradient(0deg, rgba(248, 239, 232, 0) 2.87%, rgba(248, 239, 232, 0.415) 45.12%, #F8EFE8 78.32%);
-        left: 238px;
-        top: 192px;
+        left: 0;
+        top: 0;
     }
 
     .map .discont-slide {
@@ -5911,7 +5973,11 @@ padding-top: 22px;
 
     .cons-wrapper {
         flex-wrap: wrap;
-        gap: 15px;
+        gap: 25px;
+    }
+
+    .form-slider .input-default {
+        width: 100%;
     }
 
     .con-item {
@@ -5958,6 +6024,7 @@ padding-top: 22px;
 
     .service-blog-item {
         width: 100%;
+        max-width: unset;
     }
 
     .faq-item {
@@ -5983,17 +6050,38 @@ padding-top: 22px;
     }
 
     .pagination-slide-number, .pagination-arrow {
-        width: 35px;
-        height: 35px;
+        min-width: 35px;
+        min-height: 35px;
         align-items: center;
         justify-content: center;
         padding: 0;
         display: flex;
     }
 
+    .pagination-numbers {
+        gap: 5px;
+    }
+
+    .pagination-arrow {
+        min-width: 35px;
+        min-height: 35px;
+    }
+
     .pagination-wrapper {
-        flex-direction: column;
         flex-wrap: wrap;
+    }
+
+    .faq-item-views-wrapper .faq-item-button-label {
+        font-weight: 300;
+    }
+
+    .faq-page-item-wrapper {
+        flex-direction: column;
+    }
+
+    .faq-page-item-photo img, .faq-page-item-photo {
+        width: 100%;
+        border-radius: 3px;
     }
 
     .blog-page-title {
@@ -6103,6 +6191,12 @@ padding-top: 22px;
         line-height: 46.2px;
         letter-spacing: 0%;
 
+    }
+
+    .service-blog-item-title-value {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19.5px;       
     }
 
     .masters-page-badge-wrapper {

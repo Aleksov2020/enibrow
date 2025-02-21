@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const slides = document.querySelectorAll(".review-card");
     const nextButton = document.querySelector(".reviews-button.prev-button");
     const prevButton = document.querySelector(".reviews-button.next-button");
-    const gap = window.innerWidth < 700 ? 10 : 30; // Определяем gap по разрешению
+    const gap = window.innerWidth < 700 ? 10 : 50; // Определяем gap по разрешению
     let currentIndex = 0;
     const slideWidth = slides[0].offsetWidth + gap; // Ширина слайда + gap (30px)
 
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     nextButton.addEventListener("click", () => {
-        if (currentIndex < slides.length - 1) {
+        if (currentIndex < slides.length - 3) {
             currentIndex++;
         } else {
             currentIndex = 0; // Возвращаемся к первому слайду
@@ -252,6 +252,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const textWrapper = document.querySelector(".faq-page-text-wrapper.main-text");
     const authorWrapper = document.querySelector(".author-footer");
 
+    const mainText = document.querySelector(".main-text");
+
     if (!formWrapper || !textWrapper) return; // Проверяем, есть ли элементы
 
     console.log(textWrapper.getBoundingClientRect())
@@ -261,17 +263,23 @@ document.addEventListener("DOMContentLoaded", function () {
     let isUnScrolledYet = true
 
     window.addEventListener("scroll", () => {
-        const rect = textWrapper.getBoundingClientRect(); // Получаем положение `.faq-page-text-wrapper`
-        const distanceToTop = rect.y - window.innerHeight; // Расстояние до нижнего края окна
-        const distanceToBottom = authorWrapper.getBoundingClientRect().y - window.innerHeight;
 
-        if (distanceToTop < -1220) {
+        const rectMain = mainText.getBoundingClientRect();
+        const distanceTextToTop = rectMain.y;
+
+
+        const rect = textWrapper.getBoundingClientRect(); // Получаем положение `.faq-page-text-wrapper`
+        const distanceToBottom = authorWrapper.getBoundingClientRect().y;
+        
+        console.log(distanceToBottom)
+
+        if (distanceTextToTop < 0) {
             isUnScrolledYet = false
         } else {
             isUnScrolledYet = true
         }
 
-        if (distanceToBottom < -840) {
+        if (distanceToBottom < 356) {
             isScrolledFull = true
         } else {
             isScrolledFull = false
