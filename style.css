@@ -384,6 +384,7 @@ h3 {
 .label-nav__item {
     gap: 15px;
     align-items: center;
+    cursor: pointer;
 }
 
 .laptop-nav {
@@ -2945,6 +2946,7 @@ footer {
     display: flex;
     align-items: end;
     padding-bottom: 10px;
+    white-space: nowrap;
 }
 
 .blog-page-category-item {
@@ -4614,8 +4616,11 @@ padding-top: 22px;
 
     /* ================================= PAGE ABOUT ================== */
     .service-slider-right img {
-        width: 300px;
-        height: 542px;
+        width: 400px;
+    }
+
+    .about-slider {
+        gap: 30px;
     }
 
     .about-page-title {
@@ -5378,10 +5383,17 @@ padding-top: 22px;
 
     .about-slider .service-slider-right {
         width: 100%;
+        height: auto;
+    }
+
+    .about-slide-right {
+        height: auto;
+        min-width: 707px;
     }
 
     .about-slider .service-slider-form-wrapper-tablet {
         width: 100%;
+        max-width: none;
     }
 
     .about-page-text-wrapper {
@@ -5460,10 +5472,15 @@ padding-top: 22px;
         height: 0;
     }
 
+    .about-slide-right {
+        height: 260px;
+    }
+
     .header.active .menu {
         opacity: 1;
         visibility: visible;
-        height: calc(100vh - 60px);
+        overflow: scroll;
+        height: calc(100vh - 104px);
     }
     .close-icon {
         display: none;
@@ -5499,7 +5516,7 @@ padding-top: 22px;
     }
 
     .button-header-footer.phone-footer-icon {
-        background: #825E69B2;
+        background: #a88e97;
     }
 
     .address {
@@ -5714,6 +5731,7 @@ padding-top: 22px;
         align-items: start;
         justify-content: space-between;
         height: 100%;
+        
     }
 
     .nav-pc {
@@ -6039,8 +6057,17 @@ padding-top: 22px;
         gap: 10px;
     }
 
+    .blog-page-category-wrapper {
+        flex-direction: column;
+        gap: 0;
+    }
+
     .blog-page-category-items-wrapper {
         align-items: start;
+    }
+
+    .blog-page-category-item {
+        padding: 5px 15px;
     }
 
     .blog-page-category-label {
@@ -6275,6 +6302,8 @@ padding-top: 22px;
 
     .mobile-header-footer {
         display: flex;
+        position: fixed;
+        bottom: 0;
     }
     
     .wrapper-mobile-contacts {

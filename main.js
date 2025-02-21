@@ -424,16 +424,47 @@ headerItems.forEach((item) => {
     const dropdown = item.querySelector(".services-header-wrapper"); // Находим вложенное меню
     const arrow = item.querySelector("img"); // Находим стрелку
 
-    if (dropdown) { // Проверяем, есть ли вложенное меню
+    if (dropdown && window.innerWidth > 760) { // Проверяем, есть ли вложенное меню
+        let isOpen = false;
+       
+        item.addEventListener("mouseover", (event) => {
+            // Закрываем все открытые меню
+            document.querySelectorAll(".services-header-wrapper").forEach((el) => {
+                el.classList.remove("active");
+            });
+
+            // Открываем текущее меню
+            dropdown.classList.add("active");
+
+            // Переключаем поворот стрелки
+            arrow.classList.toggle("rotate", true);
+
+            // Ставим флаг, что меню открыто
+            isOpen = true;
+
+            // Добавляем обработчик для закрытия меню при уходе мыши
+            dropdown.addEventListener("mouseleave", () => {
+                dropdown.classList.remove("active");
+                // Переключаем поворот стрелки
+                arrow.classList.toggle("rotate", false);
+                isOpen = false;
+            }, { once: true });
+
+        });
+        
+        // Обработчик для клика по всему документу, чтобы закрыть меню, если клик был не на открытом меню
+        document.addEventListener('click', (event) => {
+            // Если клик не был на открытом меню и его стрелке, закрываем меню
+            if (isOpen && !dropdown.contains(event.target) && !arrow.contains(event.target)) {
+                dropdown.classList.remove("active");
+                arrow.classList.toggle("rotate", false);
+                isOpen = false;
+            }
+        });
+        
+    } else {
         item.addEventListener("click", (event) => {
             const isOpen = dropdown.classList.contains("active");
-
-            if (document.innerWidth > 768) {
-                // Закрываем все открытые меню
-                document.querySelectorAll(".services-header-wrapper").forEach((el) => {
-                    el.classList.remove("active");
-                });
-            }
 
             // Переключаем класс "active" для текущего элемента
             if (!isOpen) {
@@ -457,8 +488,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const titleElements = document.querySelectorAll('.full-width-container-title');
 
     titleElements.forEach(title => {
+        
+
         // Добавляем обработчик клика на каждый элемент с классом .full-width-container-title
         title.addEventListener('click', function () {
+            console.log("click")
+
             titleElements.forEach(title => {
                 title.classList.remove("active");
             });
@@ -484,6 +519,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Добавляем обработчик клика на каждый элемент с классом .full-width-container-title
     button.addEventListener('click', function () {
         document.querySelector('.header').classList.toggle("active");
+        document.body.style.overflow = "hidden";
     });
 });
 
