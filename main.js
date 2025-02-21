@@ -519,7 +519,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Добавляем обработчик клика на каждый элемент с классом .full-width-container-title
     button.addEventListener('click', function () {
         document.querySelector('.header').classList.toggle("active");
-        document.body.style.overflow = "hidden";
+        document.body.classList.toggle("overflow-hidden");
     });
 });
 

@@ -547,7 +547,9 @@ nav {
     font-variation-settings: "wght" 400;
 }
 
-
+.overflow-hidden {
+    overflow: hidden;
+}
 
 
 .service-header-wrapper-item {
@@ -1192,13 +1194,52 @@ nav {
 
 .services-price {
     margin-top: 58px;
-    gap: 54px;
     align-items: center;
 }
 
 .wrapper-price-content {
     max-width: 1440px;
     width: 100%;
+}
+
+.price-wrapper-animation-outer {
+    width: 100%;
+}
+
+.price-animation-wrapper {
+    display: none;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 61px;
+    background: #F8EFE8;
+    width: 200px;
+
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    position: relative;
+}
+
+.price-animation-item {
+    position: absolute;
+    left: 10px;
+    animation: moveLeftRight 2s ease-in-out infinite;
+}
+
+@keyframes moveLeftRight {
+    0% {
+        left: 0; /* Начальная позиция элемента (влево) */
+    }
+    50% {
+        left: 10%; /* Позиция элемента на 50% анимации (вправо) */
+    }
+    100% {
+        left: 0; /* Возвращение на начальную позицию */
+    }
 }
 
 .table-wrapper {
@@ -2542,6 +2583,10 @@ footer {
 
 .cons-wrapper {
     gap: 36px;
+}
+
+.table-wrapper {
+    margin-top: 30px;
 }
 
 .con-item {
@@ -4539,7 +4584,14 @@ padding-top: 22px;
     }
 
 
+    .price-animation-wrapper {
+        display: flex;
+        margin-top: 30px;
+    }
 
+    .table-wrapper {
+        margin-top: 0;
+    }
 
 
 
