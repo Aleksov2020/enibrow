@@ -5479,7 +5479,7 @@ padding-top: 22px;
     .header.active .menu {
         opacity: 1;
         visibility: visible;
-        overflow: scroll;
+        overflow-y: scroll;
         height: calc(100vh - 104px);
     }
     .close-icon {
