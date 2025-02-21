@@ -572,6 +572,7 @@ nav {
 .full-width-container-col {
     gap: 19px;
     padding-right: 40px;
+    min-width: 225px;
 }
 
 .full-width-container-item {
